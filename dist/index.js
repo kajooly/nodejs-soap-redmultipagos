@@ -1,5 +1,5 @@
 'use_strict';
-const HelloHub = requiere('./lib/heloHub');
+const HelloHub = require('./lib/heloHub');
 module.exports = {
     HelloHub: HelloHub
 };
