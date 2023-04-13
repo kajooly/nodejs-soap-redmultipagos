@@ -1,5 +1,4 @@
-'use_strict';
-const HelloHub = require('./lib/heloHub');
+const HelloHub = require('nodejs-soap-redmultipagos/dist/helloHub.js');
 module.exports = {
-    HelloHub: HelloHub
+    Test: HelloHub
 };
