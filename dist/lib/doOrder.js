@@ -1,26 +1,20 @@
 const soap = require('soap');
+const mpc = require('../config'); // Multipagos Config
 
-const url = 'https://mi.redmultipagos.com.mx:443/Testserviciowebsoap/Listener?wsdl';
-
-const args = {
-    user: 'pruebas',
-    operator: 'Pruebas123',
-    topUpIDValue: '5256985',
-    clientFolio: 'A9999'
-};
-
-soap.createClient(url, function(err, client) {
-    if (err) {
-        console.error(err);
-        return;
-    }
-
-    client.doOrder(args, function(err, result) {
+exports.DoOrder = (args) => new Promise((res, rej) => {
+    soap.createClient(mpc.Config.url, function(err, client) {
         if (err) {
             console.error(err);
+            rej(err);
             return;
         }
-
-        console.log(result);
+        client.doOrder(args, function(err, result) {
+            if (err) {
+                console.error(err);
+                rej(err);
+                return;
+            }
+            res(err);
+        });
     });
-});
+})
